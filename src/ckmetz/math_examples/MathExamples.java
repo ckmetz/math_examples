@@ -1,21 +1,24 @@
 package ckmetz.math_examples;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MathExamples {
 
-    private Scanner sc = new Scanner(System.in);
+    final private Scanner sc = new Scanner(System.in);
 
-    public void fibonacci() {
+    /**
+     * @param int ceiling
+     * @return ArrayList<Integer>
+     */
+    public ArrayList<Integer> fibonacci(int ceiling) {
         int currentValue = 0;
         int previousValue = 0;
-
-        System.out.println("Enter a number to count up to in the Fibonacci Sequence");
-        int ceiling =  Integer.parseInt(this.sc.nextLine());
-        System.out.println("Counting up to your number!");
+        ArrayList<Integer> sequence = new ArrayList<Integer>();
 
         while (ceiling > currentValue) {
             System.out.println(currentValue);
+            sequence.add(currentValue);
             int swapValue = currentValue;
 
             currentValue = (currentValue == 0)
@@ -24,16 +27,18 @@ public class MathExamples {
 
             previousValue = swapValue;
         }
+
+        return sequence;
     }
 
     /**
-     * @param Scanner sc
+     * @param int factorial
+     * @return int
      */
-    public void factorial() {
-        System.out.println("Enter a number to get it's factorial");
-        int factorial = Integer.parseInt(this.sc.nextLine());
-        int total = MathExamples.factorialRecursion(factorial);
+    public int factorial(int factorial) {
+        int total = factorialRecursion(factorial);
         System.out.println("Your total is: " + total);
+        return total;
     }
 
     /**
@@ -48,9 +53,12 @@ public class MathExamples {
         return current * MathExamples.factorialRecursion(current-1);
     }
 
-    public void fizzbuzz() {
-        System.out.println("Enter a number to count to with FizzBuzz!");
-        int target = Integer.parseInt(this.sc.nextLine());
+    /**
+     * @param int target
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> fizzbuzz(int target) {
+        ArrayList<String> sequence = new ArrayList<String>();
 
         for (int i = 1; target >= i; i++) {
             String result = "";
@@ -66,6 +74,8 @@ public class MathExamples {
                     : Integer.toString(i);
 
             System.out.println(result);
+            sequence.add(result);
         }
+        return sequence;
     }
 }

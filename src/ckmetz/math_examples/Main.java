@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static MathExamples mathExamples = new MathExamples();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        MathExamples mathExamples = new MathExamples();
         boolean iterate = true;
 
         do {
@@ -18,13 +18,13 @@ public class Main {
 
             switch (function.toLowerCase()) {
                 case "fibonacci":
-                    mathExamples.fibonacci();
+                    Main.fibonacciFraming(sc);
                     break;
                 case "factorial":
-                    mathExamples.factorial();
+                    Main.factorialFraming(sc);
                     break;
                 case "fizzbuzz":
-                    mathExamples.fizzbuzz();
+                    Main.fizzbuzzFraming(sc);
                     break;
                 case "quit":
                     System.out.println("Quitting now thank you");
@@ -37,4 +37,31 @@ public class Main {
         } while (iterate);
     }
 
+    /**
+     * @param Scanner sc
+     */
+    private static void fibonacciFraming(Scanner sc) {
+        System.out.println("Enter a number to count up to in the Fibonacci Sequence");
+        int ceiling = Integer.parseInt(sc.nextLine());
+        System.out.println("Counting up to your number!");
+        Main.mathExamples.fibonacci(ceiling);
+    }
+
+    /**
+     * @param Scanner sc
+     */
+    private static void factorialFraming(Scanner sc) {
+        System.out.println("Enter a number to get it's factorial");
+        int factorial = Integer.parseInt(sc.nextLine());
+        Main.mathExamples.factorial(factorial);
+    }
+
+    /**
+     * @param Scanner sc
+     */
+    private static void fizzbuzzFraming(Scanner sc) {
+        System.out.println("Enter a number to count to with FizzBuzz!");
+        int target = Integer.parseInt(sc.nextLine());
+        Main.mathExamples.fizzbuzz(target);
+    }
 }
